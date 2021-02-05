@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drag and Drop Insta Feature</title>
+    <style>
+        body{
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+        }
+        img{
+            margin: 2px;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <div id="div1">
+        <img 
+            draggable="true"
+            ondragstart="drag(event)"
+            ondragover="dragover(event)"
+            ondrop="drop(event)"
+            src="https://picsum.photos/200/200?random=1"
+            id="drag1"
+            alt="noImage">
+    </div>
+    <div id="div2">
+        <img 
+            draggable="true"
+            ondragstart="drag(event)"
+            ondragover="dragover(event)"
+            ondrop="drop(event)"
+            src="https://picsum.photos/200/200?random=2"
+            id="drag2"
+            alt="noImage">
+    </div>
+    <div id="div3">
+        <img 
+            draggable="true"
+            ondragstart="drag(event)"
+            ondragover="dragover(event)"
+            ondrop="drop(event)"
+            src="https://picsum.photos/200/200?random=3"
+            id="drag3"
+            alt="noImage">
+    </div>
+    <div id="div4">
+        <img 
+            draggable="true"
+            ondragstart="drag(event)"
+            ondragover="dragover(event)"
+            ondrop="drop(event)"
+            src="https://picsum.photos/200/200?random=4"
+            id="drag4"
+            alt="noImage">
+    </div>
+    <div id="div5">
+        <img 
+            draggable="true"
+            ondragstart="drag(event)"
+            ondragover="dragover(event)"
+            ondrop="drop(event)"
+            src="https://picsum.photos/200/200?random=5"
+            id="drag5"
+            alt="noImage">
+    </div>
+    <div id="div6">
+        <img 
+            draggable="true"
+            ondragstart="drag(event)"
+            ondragover="dragover(event)"
+            ondrop="drop(event)"
+            src="https://picsum.photos/200/200?random=6"
+            id="drag6"
+            alt="noImage">
+    </div>
+    
+
+    <script>
+        let src1="",src2="",id1="",id2=""; //taking variables to store the url and the ids
+        function drag(event){
+            src1=event.target.src; //storing the url of the first image which we selected to drag
+            id1=event.target.id; //storing the id of same img
+            swapUrl(); //calling the swap url function
+        }
+        function dragover(event){ // function to check if image is droped outside the div
+            event.preventDefault(); //function is used to cancel the events
+        }
+        function drop(event){ 
+            event.preventDefault(); //using this function to stop opening the img
+            src2=event.target.src; //storing the url of the second img on which first image is droped
+            id2=event.target.id; ////storing the id of same img
+            swapUrl();
+        }
+        function swapUrl(){ //main function to swap both the images
+            if(id1!="" && id2!=""){
+                document.getElementById(id1).src=src2; 
+                document.getElementById(id2).src=src1;
+                id2="";
+                id1="";
+            }
+        }
+    </script>
+</body>
+</html>
